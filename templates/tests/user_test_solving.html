@@ -1,0 +1,13 @@
+{% include 'tests/navbar.html' %}
+
+<h1>ADD TEST</h1>
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <br>
+    <button type="submit" name="add_button" value="add_answer">Add answer</button>
+    <button type="submit" name="add_button" value="add_text">Add text</button>
+    <button type="submit" name="add_button" value="save">SAVE</button>
+</form>

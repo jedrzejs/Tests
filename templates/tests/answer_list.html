@@ -1,0 +1,35 @@
+{% include 'tests/navbar.html' %}
+
+
+<h1 align="center">Lista odpowiedzi użytkownika {{answer_list.first.user}}</h1>
+
+{% if user.is_staff %}
+<table align="center" cellspacing="20">
+    {% for user in user_list %}
+
+    <td>
+        <a href='/answers/{{ user.pk }}'> {{user}} </a>
+    </td>
+
+    {% endfor %}
+</table>
+{% endif %}
+<table style="width:70%" align="center">
+    <tr>
+        <th>Rozwiązywany test</th>
+        <th align="left">Rodzaj</th>
+    </tr>
+    <tr></tr>
+    {% for answer in answer_list %}
+    <tr>
+        <td>
+            <a href='/answer_details/{{ answer.pk }}'> {{answer}} </a>
+        </td>
+        <td>
+            {{answer.test.test_type}}
+        </td>
+    </tr>
+
+
+    {% endfor %}
+</table>

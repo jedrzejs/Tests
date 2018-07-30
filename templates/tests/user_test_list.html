@@ -1,0 +1,31 @@
+{% include 'tests/navbar.html' %}
+
+
+<h1 align="center">Lista Testów</h1>
+<br>
+<table style="width:70%" align="center">
+    <tr>
+        <th>Nazwa testu</th>
+        <th align="left">Rodzaj</th>
+        <th align="left" style="width:10%">Dodany przez</th>
+    </tr>
+    <tr></tr>
+    {% for t in test %}
+    <tr>
+        <td>
+            {% if t.test_type == 'FILLIN' %}
+            <a href='/answerfillin/{{ t.pk }}'> {{t.name}} </a>
+            {% else %}
+            <a href='/answer/{{ t.pk }}'> {{t.name}} </a>
+            {% endif %}
+        </td>
+        <td>
+            {{t.test_type}}
+        </td>
+        <td>
+            {{t.user}}
+        </td>
+    </tr>
+
+    {% endfor %}
+</table>

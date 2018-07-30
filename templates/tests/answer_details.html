@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% include 'tests/navbar.html' %}
+
+test: {{test}}
+<br>
+
+{% if test.test_type == 'FILLIN' %}
+Prawidłowe odpowiedzi zaznaczono kolorem niebieskim, odpowiedzi użytkownika kolorem zielonym:
+<br><br>
+{% for i in range %}
+{% for answer in correct_answer_set %}
+{% if answer.position == i %}
+<font color="blue">{{ answer }}</font>
+{% endif %}
+{% endfor %}
+{% for answer in answer_set %}
+{% if answer.position == i %}
+<font color="green">{{ answer }}</font>
+{% endif %}
+{% endfor %}
+{% for text in text_set %}
+{% if text.position == i %}
+{{ text }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% else %}
+
+pytanie: {{test.question|linebreaks}}
+<br>
+poprawna odpowiedz: {{test.correct_answer}}
+<br>
+typ testu: {{test.test_type}}
+<br>
+stworzony przez: {{test.user}}
+<br>
+<br>
+rozwiazany przez: {{answer.user}}
+<br>
+odpowiedz: {{answer.answer}}
+
+<br><br>
+{% if test.correct_answer == answer.answer %}
+<h1>ODPOWIEDŹ PRAWIDŁOWA</h1>
+{% else %}
+<h1>ODPOWIEDŹ BŁĘDNA</h1>
+{% endif %}
+
+{% endif %}
+</body>
+</html>

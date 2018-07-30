@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% include 'tests/navbar.html' %}
+
+{{ test.name }}
+<br>
+<form method="post">
+    {% csrf_token %}
+
+
+    {% for i in range %}
+    {% for answer in answer_set %}
+    {% if answer.position == i %}
+    <input type="text" id="answer{{answer.position}}" name="answer{{answer.position}}">
+    {% endif %}
+    {% endfor %}
+    {% for text in text_set %}
+    {% if text.position == i %}
+    {{ text }}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+
+
+    <br>
+    <button type="submit">Odpowiedz</button>
+
+</form>
+
+</body>
+</html>
